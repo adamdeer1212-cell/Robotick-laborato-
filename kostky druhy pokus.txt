@@ -1,0 +1,51 @@
+kostky druhy pokus 
+
+
+¨pocet_kostek = None
+krok = None
+y = None
+z = None
+
+
+dType.SetEndEffectorParamsEx(api, 59.7, 0, 0, 1)
+pocet_kostek = 4
+krok = 0
+
+for count in range(int(pocet_kostek)):
+  y = -45.9901 + krok * 24.3119
+  z = -46.7083 + krok * 24.9316
+  dType.SetPTPCmdEx(api, 0, 198.7415,  y,  (-46.4605), 0, 1)
+  dType.SetEndEffectorSuctionCupEx(api, 1, 1)
+  dType.SetPTPCmdEx(api, 0, 198.7415,  y,  90.0725, 0, 1)
+  dType.SetPTPCmdEx(api, 0, 198.7415,  105.8198,  z, 0, 1)
+  dType.SetEndEffectorSuctionCupEx(api, 0, 1)
+  krok = krok + 1
+  dType.SetPTPCmdEx(api, 0, 198.7415,  y,  46.4492, 0, 1)
+
+# ---- upravená druhá smyčka (stavění věže) ----
+
+for count2 in range(int(pocet_kostek)):
+
+  # pozice kde se bere kostka
+  z = -46.7083 + (pocet_kostek - 1 - count2) * 24.9316
+
+  # jet nad kostku
+  dType.SetPTPCmdEx(api, 0, 198.7415, 105.8198, z, 0, 1)
+
+  # zapnout přísavku
+  dType.SetEndEffectorSuctionCupEx(api, 1, 1)
+
+  # zvednout kostku
+  dType.SetPTPCmdEx(api, 0, 198.7415, 105.8198, 90.0725, 0, 1)
+
+  # výška pro položení (každá kostka výš)
+  z_place = -46.4605 + count2 * 24.9
+
+  # přesun na místo věže
+  dType.SetPTPCmdEx(api, 0, 198.7415, -36.6142, z_place, 0, 1)
+
+  # pustit kostku
+  dType.SetEndEffectorSuctionCupEx(api, 0, 1)
+
+  # odjet nahoru
+  dType.SetPTPCmdEx(api, 0, 198.7415, -36.6142, 46.4492, 0, 1)
