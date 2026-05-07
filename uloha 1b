@@ -1,0 +1,16 @@
+#♣kruhz
+import math
+from numbers import Number
+
+r = None
+t = None
+
+
+r = 0.6
+t = 0
+dType.SetPTPCmdEx(api, 0, 242.0269,  108.6068,  (-59.734), 0, 1)
+for count in range(360):
+  dType.SetPTPCommonParamsEx(api,300,500,1)
+  dType.SetPTPCmdEx(api, 7, (r * math.cos(t / 180.0 * math.pi)),  (r * math.sin(t / 180.0 * math.pi)),  0, 0, 1)
+  t = (t if isinstance(t, Number) else 0) + 1
+dType.SetPTPCmdEx(api, 0, 242.0269,  108.6068,  0, 0, 1)
