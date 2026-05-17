@@ -2,8 +2,5 @@
 Kody z laboratoří  
 
 
-
-
-
-
 soubor kostky druhý pokus je k úlohám 2A a 2B 
+color sorter je kod k úloze 3A
